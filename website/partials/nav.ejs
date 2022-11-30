@@ -1,0 +1,160 @@
+<div class="header">
+  <div class="container">
+    <a class="nav-title" href="/"><%= website.name %></a>
+    
+    <div>
+      <a class="<%= location === 'anasayfa' ? 'active' : '' %>" href="/">Ana Sayfa</a>
+      <a class="<%= location === 'komutlar' ? 'active' : '' %>" href="/komutlar">Komutlar</a>
+      <a href="<%= website.inviteLink %>">Davet Et</a>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="mobile-container">
+    <a class="nav-title" href="/"><%= website.name %></a>
+    
+    <svg onclick="toggleNavList()" class="menu-icon" id="menu-open" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24.75px" height="24.75px" viewbox="0 0 24.75 24.75" xml:space="preserve">
+    	<path d="M0,3.875c0-1.104,0.896-2,2-2h20.75c1.104,0,2,0.896,2,2s-0.896,2-2,2H2C0.896,5.875,0,4.979,0,3.875z M22.75,10.375H2
+    		c-1.104,0-2,0.896-2,2c0,1.104,0.896,2,2,2h20.75c1.104,0,2-0.896,2-2C24.75,11.271,23.855,10.375,22.75,10.375z M22.75,18.875H2
+    		c-1.104,0-2,0.896-2,2s0.896,2,2,2h20.75c1.104,0,2-0.896,2-2S23.855,18.875,22.75,18.875z"/>
+    </svg>
+    
+    <svg onclick="toggleNavList()" class="menu-icon" id="menu-close" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512">
+      <path d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"/>
+    </svg>
+  </div>
+</div>
+    
+<div class="nav-list" id="nav-list">
+  <a class="<%= location === 'anasayfa' ? 'active' : '' %>" href="/">Ana Sayfa</a>
+  <a class="<%= location === 'komutlar' ? 'active' : '' %>" href="/komutlar">Komutlar</a>
+  <a href="<%= website.inviteLink %>">Davet Et</a>
+</div>
+
+<script>
+  var listOpened = false;
+  
+  function toggleNavList() {
+    if (listOpened === true) {
+      listOpened = false;
+      document.getElementById("nav-list").style.top = "-100px";
+      document.getElementById("menu-open").style.display = "block";
+      document.getElementById("menu-close").style.display = "none";
+    } else {
+      listOpened = true
+      document.getElementById("nav-list").style.top = "55px";
+      document.getElementById("menu-open").style.display = "none";
+      document.getElementById("menu-close").style.display = "block";
+    }
+  }
+</script>
+
+<style>
+  .header {
+    width: 100%;
+    position: fixed;
+    background: <%= website.colors.primary %>;
+    user-select: none;
+    z-index: 9;
+  }
+  
+  .container {
+    width: 80%;
+    max-width: 800px;
+    height: 55px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .container a, .mobile-container a, .nav-list a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    margin: 0px;
+    border-radius: 5px;
+    transition: 0.2s;
+    opacity: .6;
+  }
+  
+  .container a.active, .container a:hover,
+  .mobile-container a.active, .mobile-container a:hover,
+  .nav-list a.active, .nav-list a:hover {
+    opacity: 1;
+  }
+  
+  .container .nav-title {
+    color: #fff;
+    font-size: 30px;
+    margin-right: 15px;
+    padding: 0;
+    transition: .2s;
+    opacity: 1;
+  }
+  
+  .mobile-container {
+    width: 80%;
+    max-width: 800px;
+    height: 55px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    display: none;
+  }
+  
+  .mobile-container .nav-title {
+    color: #fff;
+    font-size: 30px;
+    margin-left: 20px;
+    padding: 0;
+    transition: .2s;
+    opacity: 1;
+  }
+  
+  .mobile-container .menu-icon {
+    width: 40px;
+    color: #fff;
+    fill: #fff;
+    flex-shrink: 0;
+    margin: 0 5px 0 auto;
+    padding: 7.5px;
+  }
+
+  .mobile-container #menu-close {
+    display: none;
+  }
+  
+  .nav-list {
+    width: 100%;
+    background: <%= website.colors.second %>;
+    top: -100px;
+    right: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    transition: .5s;
+    z-index: 8;
+  }
+  
+  .nav-list a {
+    width: calc(100% - 30px);
+    text-align: right;
+  }
+  
+  @media (max-width: 700px) {
+    .header {
+      top: 0;
+    }
+    
+    .container {
+      display: none;
+    }
+    
+    .mobile-container {
+      width: 100%;
+      display: flex;
+    }
+  }
+</style>

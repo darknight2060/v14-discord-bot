@@ -1,0 +1,22 @@
+{
+  "bot": {
+    "token": "TOKEN",
+    "prefix": "PREFIX",
+    "botID": "ID",
+    "sahipID": "ID",
+    "embedColor": "#00BC4B"
+  },
+
+  "website": {
+    "name": "v14 BOT",
+    "description": "Açıklama",
+    "iconURL": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Green_icon.svg",
+    "inviteLink": "Bot Davet Linki",
+    "serverLink": "Destek Sunucu Davet Linki",
+    "colors": {
+      "primary": "#00BC4B",
+      "second": "#00A040",
+      "third": "#008133"
+    }
+  }
+}
