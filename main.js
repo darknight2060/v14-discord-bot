@@ -81,8 +81,8 @@ client.elevation = message => {
   
   let permlvl = 0;
 
-  if (message.member.permissions.has(PermissionsBitField.Flags.KickMembers)) permLevel = 1;
-  if (message.member.permissions.has(PermissionsBitField.Flags.BanMembers)) permLevel = 2;
+  if (message.member.permissions.has(PermissionsBitField.Flags.KickMembers)) permlvl = 1;
+  if (message.member.permissions.has(PermissionsBitField.Flags.BanMembers)) permlvl = 2;
   if (message.member.id === bot.sahipID) permlvl = 3;
 
   return permlvl;
